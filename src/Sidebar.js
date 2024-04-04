@@ -118,6 +118,7 @@ export default function Sidebar() {
             </ListItemButton>
           </ListItem>
 
+            <hr />
           <ListItem disablePadding sx={{ display: "block" }}>
             <ListItemText
               primary="Expense"
@@ -182,6 +183,7 @@ export default function Sidebar() {
                 sx={{ opacity: open ? 1 : 0 }}
               />
             </ListItemButton>
+            <hr />
           </ListItem>
           <ListItem disablePadding sx={{ display: "block" }}>
             <ListItemText
@@ -189,6 +191,7 @@ export default function Sidebar() {
               sx={{ pl: 3, opacity: open ? 1 : 0 }}
             />
           </ListItem>
+
 
           {/* Add Expense Button */}
           
@@ -220,7 +223,7 @@ export default function Sidebar() {
             </ListItemButton>
           </ListItem>
 
-          {/* All Expense Button */}
+    
           <ListItem
             disablePadding
             sx={{ display: "block" }}

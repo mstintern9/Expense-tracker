@@ -1,18 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Sidebar from "../Sidebar";
 import Box from "@mui/material/Box";
-export default function AllCategories({
-  categories,
-  onCategoryEdit,
-  onCategoryDelete,
-}) {
+import { useNavigate } from "react-router-dom";
+
+export default function AllCategories() {
+  const [categories, setCategories] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const storedCategories = JSON.parse(localStorage.getItem("categories")) || [];
+    setCategories(storedCategories);
+  }, []);
+
+  const handleCategoryEdit = (id) => {
+    navigate(`/add-category/${id}`);
+  };
+
+  const handleCategoryDelete = (id) => {
+    const updatedCategories = categories.filter(
+      (category) => category.id !== id
+    );
+    setCategories(updatedCategories);
+    localStorage.setItem("categories", JSON.stringify(updatedCategories));
+  };
+
   return (
     <>
       <Box sx={{ display: "flex" }}>
         <Sidebar />
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-          <div style={{ display: "flex",flexDirection:"column" }}>
-          <h1>All categories</h1>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <h1>All categories</h1>
             <table>
               <thead>
                 <tr>
@@ -27,8 +45,10 @@ export default function AllCategories({
                     <td align="center">{category.id}</td>
                     <td align="center">{category.name}</td>
                     <td align="center">
-                    <button onClick={()=> onCategoryEdit(category.id)} >Edit</button>
-                      <button onClick={() => onCategoryDelete(category.id)}>
+                      <button onClick={() => handleCategoryEdit(category.id)}>
+                        Edit
+                      </button>
+                      <button onClick={() => handleCategoryDelete(category.id)}>
                         Delete
                       </button>
                     </td>

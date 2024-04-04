@@ -1,39 +1,27 @@
 import React, { useState, useEffect } from "react";
 import Sidebar from "../Sidebar";
 import Box from "@mui/material/Box";
-import { useParams } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
-export default function AddCategory({ onCategoryAdd }) {
+export default function AddCategory() {
   const [category, setCategory] = useState("");
   const { id } = useParams();
+  const navigate = useNavigate();
   const isEditing = !!id;
-  const navigate=useNavigate(); 
 
   useEffect(() => {
-    const categoryId = parseInt(id);
-    const storedCategories = JSON.parse(localStorage.getItem("categories")) || [];
-    const categoryData = storedCategories.find(item => item.id === categoryId);
-    
-    if (categoryData) {
-      setCategory(categoryData.name); 
+    if (isEditing) {
+      const categoryId = parseInt(id);
+      const storedCategories =
+        JSON.parse(localStorage.getItem("categories")) || [];
+      const categoryData = storedCategories.find(
+        (item) => item.id === categoryId
+      );
+      if (categoryData) {
+        setCategory(categoryData.name);
+      }
     }
-  }, [id]);
-
-  useEffect(() => {
-    if (category !== "") {
-      const categoryId = parseInt(id); 
-      const updatedCategory = { id: categoryId, name: category };
-      const storedCategories = JSON.parse(localStorage.getItem("categories")) || [];
-      const updatedCategories = storedCategories.map(item => {
-        if (item.id === categoryId) {
-          return updatedCategory;
-        }
-        return item;
-      });
-      localStorage.setItem("categories", JSON.stringify(updatedCategories));
-    }
-  }, [category, id]);
+  }, [id, isEditing]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -42,23 +30,20 @@ export default function AddCategory({ onCategoryAdd }) {
       JSON.parse(localStorage.getItem("categories")) || [];
     const updatedCategories = [...storedCategories, newCategory];
     localStorage.setItem("categories", JSON.stringify(updatedCategories));
-    onCategoryAdd(newCategory);
-    setCategory("");
+    navigate("/all-categories");
   }
 
   function handleUpdate(e) {
     e.preventDefault();
-    const categoryId = parseInt(id); 
+    const categoryId = parseInt(id);
     const updatedCategory = { id: categoryId, name: category };
-    const storedCategories = JSON.parse(localStorage.getItem("categories")) || [];
-    const updatedCategories = storedCategories.map(item => {
-      if (item.id === categoryId) { 
-        return updatedCategory;
-      }
-      return item;
-    });
+    const storedCategories =
+      JSON.parse(localStorage.getItem("categories")) || [];
+    const updatedCategories = storedCategories.map((item) =>
+      item.id === categoryId ? updatedCategory : item
+    );
     localStorage.setItem("categories", JSON.stringify(updatedCategories));
-    navigate("/all-categories")
+    navigate("/all-categories");
   }
 
   function handleChange(e) {
@@ -92,8 +77,12 @@ export default function AddCategory({ onCategoryAdd }) {
                 </button>
                 {isEditing && (
                   <button
-                    style={{ width: "14vh", marginTop: "1vh", marginLeft: "1rem" }}
-                    onClick={handleSubmit}
+                    style={{
+                      width: "14vh",
+                      marginTop: "1vh",
+                      marginLeft: "1rem",
+                    }}
+                    onClick={() => navigate("/all-categories")}
                   >
                     Cancel
                   </button>
