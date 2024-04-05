@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Sidebar from "../modules/Sidebar";
+import Sidebar from "../Sidebar";
 import Box from "@mui/material/Box";
 import { useNavigate } from "react-router-dom";
 

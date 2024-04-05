@@ -1,12 +1,16 @@
 import React from "react";
-import AppRoutes from "./modules/AppRoutes";
+import routes from "./modules/AppRoutes";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
-  return (
-    <>
-      <AppRoutes />
-    </>
+  const AppRoutes = () => (
+    <Routes>
+      {routes.map(({ path, element }, index) => (
+        <Route key={index} path={path} element={element} />
+      ))}
+    </Routes>
   );
+  return <AppRoutes />;
 }
 
 export default App;

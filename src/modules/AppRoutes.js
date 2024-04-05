@@ -1,5 +1,4 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
 import Dashboard from "../pages/Dashboard";
 import AddExpense from "../pages/Add-expense";
 import AllExpense from "../pages/All-expense";
@@ -17,12 +16,4 @@ const routes = [
   { path: ROUTES.ADD_CATEGORY, element: <AddCategory /> },
 ];
 
-const AppRoutes = () => (
-  <Routes>
-    {routes.map(({ path, element }, index) => (
-      <Route key={index} path={path} element={element} />
-    ))}
-  </Routes>
-);
-
-export default AppRoutes;
+export default routes;

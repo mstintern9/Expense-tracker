@@ -1,5 +1,5 @@
 import React from "react";
-import Sidebar from "../modules/Sidebar";
+import Sidebar from "../Sidebar";
 import Box from "@mui/material/Box";
 
 export default function Dashboard() {
