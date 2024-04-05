@@ -11,13 +11,12 @@ function App() {
       ))}
     </Routes>
   );
-  return(
+  return (
     <>
-    <Sidebar /> 
-    <AppRoutes />
-  </>
-    
-  ) 
+      <Sidebar />
+      <AppRoutes />
+    </>
+  );
 }
 
 export default App;

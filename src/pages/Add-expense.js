@@ -70,7 +70,6 @@ export default function AddExpense() {
     } else {
       addExpense(expense);
     }
-
     setDate("");
     setAmount("");
     setCategory("");
@@ -90,7 +89,7 @@ export default function AddExpense() {
   return (
     <>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <div style={{marginLeft:"27vh"}} className="add-Expense">
+        <div style={{ marginLeft: "27vh" }} className="add-Expense">
           <h1>{isEditing ? "Update Expense" : "Add Expense"}</h1>
           <form onSubmit={handleSubmit}>
             <div style={{ display: "flex", flexDirection: "column" }}>
