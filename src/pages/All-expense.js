@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Sidebar from "../Sidebar";
 import Box from "@mui/material/Box";
 import { useNavigate } from "react-router-dom";
 
@@ -38,13 +37,10 @@ export default function AllExpense() {
       </tr>
     ));
   }
-
   return (
-    <>
-      <Box sx={{ display: "flex" }}>
-        <Sidebar />
+    <>  
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-          <div style={{ display: "flex", flexDirection: "column" }}>
+          <div style={{marginLeft:"27vh" ,display: "flex", flexDirection: "column" }}>
             <h1>All expense</h1>
             <table>
               <thead>
@@ -59,7 +55,6 @@ export default function AllExpense() {
               <tbody>{expenseDataRow}</tbody>
             </table>
           </div>
-        </Box>
       </Box>
     </>
   );

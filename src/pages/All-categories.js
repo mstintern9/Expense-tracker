@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Sidebar from "../Sidebar";
 import Box from "@mui/material/Box";
 import { useNavigate } from "react-router-dom";
 
@@ -26,10 +25,8 @@ export default function AllCategories() {
 
   return (
     <>
-      <Box sx={{ display: "flex" }}>
-        <Sidebar />
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-          <div style={{ display: "flex", flexDirection: "column" }}>
+          <div style={{marginLeft:"27vh" ,display:"flex", flexDirection:"column"}}>
             <h1>All categories</h1>
             <table>
               <thead>
@@ -58,7 +55,6 @@ export default function AllCategories() {
             </table>
           </div>
         </Box>
-      </Box>
     </>
   );
 }

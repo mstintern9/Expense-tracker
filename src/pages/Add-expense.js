@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Sidebar from "../Sidebar";
 import Box from "@mui/material/Box";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -59,7 +58,7 @@ export default function AddExpense() {
     }
 
     const expense = {
-      id: isEditing ? parseInt(id) : generateRandomId(), 
+      id: isEditing ? parseInt(id) : generateRandomId(),
       date,
       amount,
       category,
@@ -90,62 +89,59 @@ export default function AddExpense() {
 
   return (
     <>
-      <Box sx={{ display: "flex" }}>
-        <Sidebar />
-        <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-          <div className="add-Expense">
-            <h1>{isEditing ? "Update Expense" : "Add Expense"}</h1>
-            <form onSubmit={handleSubmit}>
-              <div style={{ display: "flex", flexDirection: "column" }}>
-                <label>Date of Purchase:</label>
-                <input
-                  value={date}
-                  onChange={(e) => setDate(e.target.value)}
-                  style={{ width: "25vh" }}
-                  type="date"
-                />
-                <label>Amount:</label>
-                <input
-                  value={amount}
-                  onChange={(e) => setAmount(e.target.value)}
-                  style={{ width: "25vh" }}
-                  type="number"
-                />
-                <label>Category:</label>
-                <select
-                  style={{ width: "25vh" }}
-                  value={category}
-                  onChange={handleChange}
-                >
-                  <option disabled value="">
-                    Select a category
+      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+        <div style={{marginLeft:"27vh"}} className="add-Expense">
+          <h1>{isEditing ? "Update Expense" : "Add Expense"}</h1>
+          <form onSubmit={handleSubmit}>
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <label>Date of Purchase:</label>
+              <input
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+                style={{ width: "25vh" }}
+                type="date"
+              />
+              <label>Amount:</label>
+              <input
+                value={amount}
+                onChange={(e) => setAmount(e.target.value)}
+                style={{ width: "25vh" }}
+                type="number"
+              />
+              <label>Category:</label>
+              <select
+                style={{ width: "25vh" }}
+                value={category}
+                onChange={handleChange}
+              >
+                <option disabled value="">
+                  Select a category
+                </option>
+                {categories.map((cat) => (
+                  <option key={cat.id} value={cat.name}>
+                    {cat.name}
                   </option>
-                  {categories.map((cat) => (
-                    <option key={cat.id} value={cat.name}>
-                      {cat.name}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div style={{ display: "flex", flexDirection: "column" }}>
-                <label>Description:</label>
-                <input
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-                  type="text"
-                  style={{ width: "20vh" }}
-                  placeholder="Enter Description..."
-                />
-                <button style={{ marginTop: 12, width: "13vh" }}>
-                  {isEditing ? "Update Expense" : "Submit Expense"}
-                </button>
-                {!formValid && (
-                  <p style={{ color: "red" }}>Please fill out all fields</p>
-                )}
-              </div>
-            </form>
-          </div>
-        </Box>
+                ))}
+              </select>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <label>Description:</label>
+              <input
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                type="text"
+                style={{ width: "20vh" }}
+                placeholder="Enter Description..."
+              />
+              <button style={{ marginTop: 12, width: "13vh" }}>
+                {isEditing ? "Update Expense" : "Submit Expense"}
+              </button>
+              {!formValid && (
+                <p style={{ color: "red" }}>Please fill out all fields</p>
+              )}
+            </div>
+          </form>
+        </div>
       </Box>
     </>
   );

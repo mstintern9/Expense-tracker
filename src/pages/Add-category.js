@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Sidebar from "../Sidebar";
 import Box from "@mui/material/Box";
 import { useParams, useNavigate } from "react-router-dom";
 
@@ -56,10 +55,8 @@ export default function AddCategory() {
 
   return (
     <>
-      <Box sx={{ display: "flex" }}>
-        <Sidebar />
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-          <div className="add-Expense">
+          <div style={{marginLeft:"27vh"}} className="add-Expense">
             <h1>{isEditing ? "Update Category" : "Add Category"}</h1>
             <form onSubmit={isEditing ? handleUpdate : handleSubmit}>
               <div style={{ display: "flex", flexDirection: "column" }}>
@@ -91,7 +88,6 @@ export default function AddCategory() {
             </form>
           </div>
         </Box>
-      </Box>
     </>
   );
 }

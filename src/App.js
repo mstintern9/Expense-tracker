@@ -1,6 +1,7 @@
 import React from "react";
 import routes from "./modules/AppRoutes";
 import { Routes, Route } from "react-router-dom";
+import Sidebar from "./Sidebar";
 
 function App() {
   const AppRoutes = () => (
@@ -10,7 +11,13 @@ function App() {
       ))}
     </Routes>
   );
-  return <AppRoutes />;
+  return(
+    <>
+    <Sidebar /> 
+    <AppRoutes />
+  </>
+    
+  ) 
 }
 
 export default App;
