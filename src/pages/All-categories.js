@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Box from "@mui/material/Box";
 import { useNavigate } from "react-router-dom";
 import Paper from "@mui/material/Paper";
 import TableContainer from "@mui/material/TableContainer";
@@ -8,6 +7,7 @@ import TableHead from "@mui/material/TableHead";
 import TableBody from "@mui/material/TableBody";
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
+import CardComponent from "../components/CardComponent";
 
 export default function AllCategories() {
   const [categories, setCategories] = useState([]);
@@ -32,7 +32,7 @@ export default function AllCategories() {
 
   return (
     <>
-      <Box component="main">
+      <CardComponent>
         <div className="table">
           <Paper sx={{ boxShadow: "none", width: "100%", overflow: "hidden", margin: "0", marginTop: "2vh", height: "66vh", border: "none" }}>
             <TableContainer sx={{ maxHeight: 640 }}>
@@ -62,7 +62,7 @@ export default function AllCategories() {
             </TableContainer>
           </Paper>
         </div>
-      </Box>
+      </CardComponent>
     </>
   );
 }

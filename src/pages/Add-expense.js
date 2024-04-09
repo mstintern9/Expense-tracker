@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Box from "@mui/material/Box";
 import { useNavigate, useParams } from "react-router-dom";
 import "./addExpense.css";
+import CardComponent from "../components/CardComponent";
 
 export default function AddExpense() {
   const [date, setDate] = useState("");
@@ -89,7 +89,7 @@ export default function AddExpense() {
 
   return (
     <>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+      <CardComponent>
         <div style={{ marginLeft: "27vh" }} className="add-Expense">
           <form onSubmit={handleSubmit}>
             <div
@@ -149,7 +149,7 @@ export default function AddExpense() {
             </div>
           </form>
         </div>
-      </Box>
+      </CardComponent>
     </>
   );
 }

@@ -44,13 +44,14 @@
     font-size: 1.5vh;
     background-color: rgba(212, 203, 203, 0.386);
     align-items: center;
-    text-align: center;
+    text-align: start;
+    padding: 0.4vh;
     color: grey;
     box-shadow: 4.7px 9.4px 9.4px hsl(0deg 0% 0% / 0.35);
 }
 
 .inputs::placeholder{
-    padding: 2vh;
+    padding: 0.4vh;
 }
 
 .inputs:focus{

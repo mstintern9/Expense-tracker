@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Box from "@mui/material/Box";
 import { useParams, useNavigate } from "react-router-dom";
+import CardComponent from "../components/CardComponent";
 
 export default function AddCategory() {
   const [category, setCategory] = useState("");
@@ -29,7 +29,7 @@ export default function AddCategory() {
     const newCategory = {
       id: generateRandomId(),
       name: category,
-      description: description 
+      description: description,
     };
     const storedCategories =
       JSON.parse(localStorage.getItem("categories")) || [];
@@ -44,7 +44,7 @@ export default function AddCategory() {
     const updatedCategory = {
       id: categoryId,
       name: category,
-      description: description 
+      description: description,
     };
     const storedCategories =
       JSON.parse(localStorage.getItem("categories")) || [];
@@ -65,7 +65,7 @@ export default function AddCategory() {
 
   return (
     <>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+      <CardComponent>
         <div style={{ marginLeft: "27vh" }} className="add-Expense">
           <form onSubmit={isEditing ? handleUpdate : handleSubmit}>
             <div style={{ display: "flex", flexDirection: "column" }}>
@@ -81,12 +81,12 @@ export default function AddCategory() {
               <input
                 className="inputs"
                 type="text"
-                value={description} 
+                value={description}
                 placeholder="Enter Description..."
                 onChange={handleChange}
               />
             </div>
-            <div style={{display:"flex",flexDirection:"column"}}>
+            <div style={{ display: "flex", flexDirection: "column" }}>
               <button className="button">
                 {isEditing ? "Update Category" : "Add Category"}
               </button>
@@ -101,7 +101,7 @@ export default function AddCategory() {
             </div>
           </form>
         </div>
-      </Box>
+      </CardComponent>
     </>
   );
 }
