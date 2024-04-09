@@ -14,7 +14,8 @@ export default function AllCategories() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const storedCategories = JSON.parse(localStorage.getItem("categories")) || [];
+    const storedCategories =
+      JSON.parse(localStorage.getItem("categories")) || [];
     setCategories(storedCategories);
   }, []);
 
@@ -32,17 +33,47 @@ export default function AllCategories() {
 
   return (
     <>
-      <CardComponent>
+      <CardComponent title={"All Categories"}>
         <div className="table">
-          <Paper sx={{ boxShadow: "none", width: "100%", overflow: "hidden", margin: "0", marginTop: "2vh", height: "66vh", border: "none" }}>
+          <Paper
+            sx={{
+              boxShadow: "none",
+              width: "100%",
+              overflow: "hidden",
+              margin: "0",
+              marginTop: "2vh",
+              height: "66vh",
+              border: "none",
+            }}
+          >
             <TableContainer sx={{ maxHeight: 640 }}>
               <Table stickyHeader aria-label="sticky table">
                 <TableHead>
                   <TableRow>
-                    <TableCell sx={{ color: "gray", fontSize: "2.4vh" }} align="center">ID</TableCell>
-                    <TableCell sx={{ color: "gray", fontSize: "2.4vh" }} align="center">Name</TableCell>
-                    <TableCell sx={{ color: "gray", fontSize: "2.4vh" }} align="center">Description</TableCell>
-                    <TableCell sx={{ color: "gray", fontSize: "2.4vh" }} align="center">Action</TableCell>
+                    <TableCell
+                      sx={{ color: "gray", fontSize: "2.4vh" }}
+                      align="center"
+                    >
+                      ID
+                    </TableCell>
+                    <TableCell
+                      sx={{ color: "gray", fontSize: "2.4vh" }}
+                      align="center"
+                    >
+                      Name
+                    </TableCell>
+                    <TableCell
+                      sx={{ color: "gray", fontSize: "2.4vh" }}
+                      align="center"
+                    >
+                      Description
+                    </TableCell>
+                    <TableCell
+                      sx={{ color: "gray", fontSize: "2.4vh" }}
+                      align="center"
+                    >
+                      Action
+                    </TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -50,10 +81,22 @@ export default function AllCategories() {
                     <TableRow key={category.id}>
                       <TableCell align="center">{category.id}</TableCell>
                       <TableCell align="center">{category.name}</TableCell>
-                      <TableCell align="center">{category.description}</TableCell>
                       <TableCell align="center">
-                        <button className="tableButton" onClick={() => handleCategoryEdit(category.id)} >Edit</button>
-                        <button className="tableButton" onClick={() => handleCategoryDelete(category.id)} >Delete</button>
+                        {category.description}
+                      </TableCell>
+                      <TableCell align="center">
+                        <button
+                          className="tableButton"
+                          onClick={() => handleCategoryEdit(category.id)}
+                        >
+                          Edit
+                        </button>
+                        <button
+                          className="tableButton"
+                          onClick={() => handleCategoryDelete(category.id)}
+                        >
+                          Delete
+                        </button>
                       </TableCell>
                     </TableRow>
                   ))}

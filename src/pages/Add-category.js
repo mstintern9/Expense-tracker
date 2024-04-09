@@ -65,7 +65,7 @@ export default function AddCategory() {
 
   return (
     <>
-      <CardComponent>
+      <CardComponent title={"Add Category"} >
         <div style={{ marginLeft: "27vh" }} className="add-Expense">
           <form onSubmit={isEditing ? handleUpdate : handleSubmit}>
             <div style={{ display: "flex", flexDirection: "column" }}>

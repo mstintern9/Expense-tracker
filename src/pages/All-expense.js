@@ -33,7 +33,7 @@ export default function AllExpense() {
 
   return (
     <>
-      <CardComponent>
+      <CardComponent title={"All Expense"} >
         <div className="table">
           <Paper
             sx={{

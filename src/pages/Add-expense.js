@@ -89,7 +89,7 @@ export default function AddExpense() {
 
   return (
     <>
-      <CardComponent>
+      <CardComponent title={"Add Expense"} >
         <div style={{ marginLeft: "27vh" }} className="add-Expense">
           <form onSubmit={handleSubmit}>
             <div
