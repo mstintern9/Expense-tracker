@@ -1,0 +1,84 @@
+.MuiBox-root{
+    margin-left: 33vh;
+    margin-right: 12vh;
+    margin-top: 6vh;
+    height: 68vh;
+    border-radius: 1.5vh;
+    display: flex;
+    flex-direction: row;
+    border: 3px solid rgb(221, 221, 221);
+    background-color: rgb(255, 255, 255);
+}
+
+.add-Expense{
+    margin-left: 40vh;
+    display: flex;
+    flex-direction: column;
+    border: 3px solid rgb(241, 241, 241);
+    width: 47vh;
+    padding: 4.5vh;
+    background-color:rgb(245, 245, 245) ;
+    border-radius: 1.4vh;
+}
+
+.firstForm{
+    display: flex;
+    flex-direction: column;
+    gap: 0.3vh;
+    margin-bottom: 2vh;
+}
+
+.secondForm{
+    display: flex;
+    flex-direction: column;
+    gap: 0.3vh;
+}
+
+.inputs{
+    width: 35vh;
+    border: 2px solid rgb(221, 221, 221);
+    border-radius: 1.3vh;
+    height: 5vh;
+    margin-left: 4vh;
+    margin: 1.4vh;
+    font-size: 1.5vh;
+    background-color: rgba(212, 203, 203, 0.386);
+    align-items: center;
+    text-align: center;
+    color: grey;
+    box-shadow: 4.7px 9.4px 9.4px hsl(0deg 0% 0% / 0.35);
+}
+
+.inputs::placeholder{
+    padding: 2vh;
+}
+
+.inputs:focus{
+    outline: none;
+}
+
+.button{
+    margin-top: 12px;
+    width: 13vh;
+    height: 5.3vh;
+    margin-left: 13vh;
+    background: rgb(63, 81, 181);
+    box-shadow: 4.7px 9.4px 9.4px hsl(0deg 0% 0% / 0.35);
+    border: none;
+    color: white;
+    border-radius: 1.45vh;
+}
+
+.button:hover{
+    background-color:  rgba(52, 71, 181, 0.819);
+    cursor: pointer;
+}
+
+.inputs:hover{
+    background-color: rgba(212, 203, 203, 0.276);
+}
+
+.label{
+    color: grey;
+    margin-left: 2vh;
+}

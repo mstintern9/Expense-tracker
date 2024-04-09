@@ -2,6 +2,7 @@ import React from "react";
 import routes from "./modules/AppRoutes";
 import { Routes, Route } from "react-router-dom";
 import Sidebar from "./Sidebar";
+import Navbar from "./Navbar";
 
 function App() {
   const AppRoutes = () => (
@@ -13,6 +14,7 @@ function App() {
   );
   return (
     <>
+      <Navbar />
       <Sidebar />
       <AppRoutes />
     </>

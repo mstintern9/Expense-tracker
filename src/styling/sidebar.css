@@ -1,0 +1,29 @@
+.MuiPaper-root{
+    margin-top: 7vh;
+}
+
+.list{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid rgb(221, 221, 221);
+    height: 100vh;
+    gap: 0.7vh;
+}
+
+.caption{
+    padding-left: 3vh;
+    margin-top: -1vh;
+    font-size: 5vh;
+    margin-left: 2vh;
+    font-size: 4px;
+}
+
+.break{
+    border: 0.2vh solid rgb(221, 221, 221);
+}
+
+.caption{
+    color: grey;
+    font-size: 3px;
+    padding-left: 0.1vh;
+}

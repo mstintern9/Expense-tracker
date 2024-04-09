@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import { useNavigate, useParams } from "react-router-dom";
+import "./addExpense.css";
 
 export default function AddExpense() {
   const [date, setDate] = useState("");
@@ -90,26 +91,30 @@ export default function AddExpense() {
     <>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <div style={{ marginLeft: "27vh" }} className="add-Expense">
-          <h1>{isEditing ? "Update Expense" : "Add Expense"}</h1>
           <form onSubmit={handleSubmit}>
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              <label>Date of Purchase:</label>
+            <div
+              className="firstForm"
+              style={{ display: "flex", flexDirection: "column" }}
+            >
+              <label className="label">Date:</label>
               <input
+                className="inputs"
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
-                style={{ width: "25vh" }}
                 type="date"
               />
-              <label>Amount:</label>
+              <label className="label">Amount:</label>
               <input
+                className="inputs"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
-                style={{ width: "25vh" }}
                 type="number"
+                placeholder="Amount"
               />
-              <label>Category:</label>
+              <label className="label">Category:</label>
               <select
-                style={{ width: "25vh" }}
+                style={{ width: "36vh", height: "5vh" }}
+                className="inputs"
                 value={category}
                 onChange={handleChange}
               >
@@ -123,16 +128,19 @@ export default function AddExpense() {
                 ))}
               </select>
             </div>
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              <label>Description:</label>
+            <div
+              className="secondForm"
+              style={{ display: "flex", flexDirection: "column" }}
+            >
+              <label className="label">Description:</label>
               <input
+                className="inputs"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 type="text"
-                style={{ width: "20vh" }}
                 placeholder="Enter Description..."
               />
-              <button style={{ marginTop: 12, width: "13vh" }}>
+              <button className="button">
                 {isEditing ? "Update Expense" : "Submit Expense"}
               </button>
               {!formValid && (

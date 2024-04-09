@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import { useNavigate } from "react-router-dom";
+import Paper from "@mui/material/Paper";
+import TableContainer from "@mui/material/TableContainer";
+import Table from "@mui/material/Table";
+import TableHead from "@mui/material/TableHead";
+import TableBody from "@mui/material/TableBody";
+import TableRow from "@mui/material/TableRow";
+import TableCell from "@mui/material/TableCell";
 
 export default function AllCategories() {
   const [categories, setCategories] = useState([]);
@@ -25,36 +32,37 @@ export default function AllCategories() {
 
   return (
     <>
-        <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-          <div style={{marginLeft:"27vh" ,display:"flex", flexDirection:"column"}}>
-            <h1>All categories</h1>
-            <table>
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Name</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {categories.map((category) => (
-                  <tr key={category.id}>
-                    <td align="center">{category.id}</td>
-                    <td align="center">{category.name}</td>
-                    <td align="center">
-                      <button onClick={() => handleCategoryEdit(category.id)}>
-                        Edit
-                      </button>
-                      <button onClick={() => handleCategoryDelete(category.id)}>
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </Box>
+      <Box component="main">
+        <div className="table">
+          <Paper sx={{ boxShadow: "none", width: "100%", overflow: "hidden", margin: "0", marginTop: "2vh", height: "66vh", border: "none" }}>
+            <TableContainer sx={{ maxHeight: 640 }}>
+              <Table stickyHeader aria-label="sticky table">
+                <TableHead>
+                  <TableRow>
+                    <TableCell sx={{ color: "gray", fontSize: "2.4vh" }} align="center">ID</TableCell>
+                    <TableCell sx={{ color: "gray", fontSize: "2.4vh" }} align="center">Name</TableCell>
+                    <TableCell sx={{ color: "gray", fontSize: "2.4vh" }} align="center">Description</TableCell>
+                    <TableCell sx={{ color: "gray", fontSize: "2.4vh" }} align="center">Action</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {categories.map((category) => (
+                    <TableRow key={category.id}>
+                      <TableCell align="center">{category.id}</TableCell>
+                      <TableCell align="center">{category.name}</TableCell>
+                      <TableCell align="center">{category.description}</TableCell>
+                      <TableCell align="center">
+                        <button className="tableButton" onClick={() => handleCategoryEdit(category.id)} >Edit</button>
+                        <button className="tableButton" onClick={() => handleCategoryDelete(category.id)} >Delete</button>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </Paper>
+        </div>
+      </Box>
     </>
   );
 }

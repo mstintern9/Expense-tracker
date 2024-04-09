@@ -9,6 +9,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { useNavigate } from "react-router-dom";
 import { sidebarItems } from "./modules/sidebar";
+import './styling/sidebar.css';
 
 const drawerWidth = 240;
 
@@ -23,19 +24,15 @@ const Drawer = styled(MuiDrawer, {
 
 const Sidebar = () => {
   const navigate = useNavigate();
-
   return (
     <Drawer variant="permanent">
       <Divider />
-      <List>
+      <List className="list" >
         {sidebarItems.map((item, index) => {
           if (item.caption) {
             return (
               <ListItem key={index} disablePadding sx={{ display: "block" }}>
-                <ListItemText
-                  primary={item.caption}
-                  sx={{ pl: 3 }}
-                />
+                <ListItemText primary={item.caption} className="caption" />
               </ListItem>
             );
           } else {
@@ -53,11 +50,10 @@ const Sidebar = () => {
                     px: 2.5,
                   }}
                 >
-                  <ListItemIcon>
-                    {item.icon}
-                  </ListItemIcon>
+                  <ListItemIcon>{item.icon}</ListItemIcon>
                   <ListItemText primary={item.name} />
                 </ListItemButton>
+                <hr className="break" />
               </ListItem>
             );
           }

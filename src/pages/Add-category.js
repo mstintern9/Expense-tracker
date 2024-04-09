@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 
 export default function AddCategory() {
   const [category, setCategory] = useState("");
+  const [description, setDescription] = useState("");
   const { id } = useParams();
   const navigate = useNavigate();
   const isEditing = !!id;
@@ -18,13 +19,18 @@ export default function AddCategory() {
       );
       if (categoryData) {
         setCategory(categoryData.name);
+        setDescription(categoryData.description);
       }
     }
   }, [id, isEditing]);
 
   function handleSubmit(e) {
     e.preventDefault();
-    const newCategory = { id: generateRandomId(), name: category };
+    const newCategory = {
+      id: generateRandomId(),
+      name: category,
+      description: description 
+    };
     const storedCategories =
       JSON.parse(localStorage.getItem("categories")) || [];
     const updatedCategories = [...storedCategories, newCategory];
@@ -35,7 +41,11 @@ export default function AddCategory() {
   function handleUpdate(e) {
     e.preventDefault();
     const categoryId = parseInt(id);
-    const updatedCategory = { id: categoryId, name: category };
+    const updatedCategory = {
+      id: categoryId,
+      name: category,
+      description: description 
+    };
     const storedCategories =
       JSON.parse(localStorage.getItem("categories")) || [];
     const updatedCategories = storedCategories.map((item) =>
@@ -46,7 +56,7 @@ export default function AddCategory() {
   }
 
   function handleChange(e) {
-    setCategory(e.target.value);
+    setDescription(e.target.value);
   }
 
   function generateRandomId() {
@@ -55,39 +65,43 @@ export default function AddCategory() {
 
   return (
     <>
-        <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-          <div style={{marginLeft:"27vh"}} className="add-Expense">
-            <h1>{isEditing ? "Update Category" : "Add Category"}</h1>
-            <form onSubmit={isEditing ? handleUpdate : handleSubmit}>
-              <div style={{ display: "flex", flexDirection: "column" }}>
-                <label>Add a category:</label>
-                <input
-                  style={{ width: "25vh" }}
-                  type="text"
-                  value={category}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="button">
-                <button style={{ width: "14vh", marginTop: "1vh" }}>
-                  {isEditing ? "Update Category" : "Add Category"}
+      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+        <div style={{ marginLeft: "27vh" }} className="add-Expense">
+          <form onSubmit={isEditing ? handleUpdate : handleSubmit}>
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <label className="label">Category:</label>
+              <input
+                className="inputs"
+                type="text"
+                value={category}
+                placeholder="Enter the category"
+                onChange={(e) => setCategory(e.target.value)}
+              />
+              <label className="label">Description:</label>
+              <input
+                className="inputs"
+                type="text"
+                value={description} 
+                placeholder="Enter Description..."
+                onChange={handleChange}
+              />
+            </div>
+            <div style={{display:"flex",flexDirection:"column"}}>
+              <button className="button">
+                {isEditing ? "Update Category" : "Add Category"}
+              </button>
+              {isEditing && (
+                <button
+                  className="button"
+                  onClick={() => navigate("/all-categories")}
+                >
+                  Cancel
                 </button>
-                {isEditing && (
-                  <button
-                    style={{
-                      width: "14vh",
-                      marginTop: "1vh",
-                      marginLeft: "1rem",
-                    }}
-                    onClick={() => navigate("/all-categories")}
-                  >
-                    Cancel
-                  </button>
-                )}
-              </div>
-            </form>
-          </div>
-        </Box>
+              )}
+            </div>
+          </form>
+        </div>
+      </Box>
     </>
   );
 }

@@ -1,0 +1,31 @@
+.table{
+    display: flex;
+    flex-direction: row;
+    margin-left: 0.2vh;
+    flex:1;
+    max-height: 67vh;
+}
+
+table{
+    width: 100%;
+    height: 69vh;
+    margin-right: 8vh;
+    margin: 0;
+}
+
+.tableButton{
+    margin-top: 12px;
+    margin:0.4vh;
+    width: 7vh;
+    height: 3.5vh;
+    background: rgb(63, 81, 181);
+    box-shadow: 4.7px 9.4px 9.4px hsl(0deg 0% 0% / 0.35);
+    border: none;
+    color: white;
+    border-radius: 1.45vh;
+}
+
+.tableButton:hover{
+    background-color:  rgba(52, 71, 181, 0.819);
+    cursor: pointer;
+}

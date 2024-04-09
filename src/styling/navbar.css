@@ -1,0 +1,23 @@
+.navbar{
+    display: flex;
+    background-color:rgb(63, 81, 181) ;
+    height: 7vh;
+}
+
+.iconContainer{
+    height: 5vh;
+    width: 6vh;
+    size: 2vh;
+    margin-left: 3vh;
+    margin-top: 1vh;
+    color: white;
+}
+
+.header{
+    color: white;
+    font-size: xx-large;
+    margin: -2.4vh;
+    margin-left: 17vh;
+}
+
+
