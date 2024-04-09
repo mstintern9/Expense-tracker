@@ -8,7 +8,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { useNavigate } from "react-router-dom";
-import { sidebarItems } from "./modules/sidebar";
+import { sidebarItems } from "./modules/Sidebar";
 import './styling/sidebar.css';
 
 const drawerWidth = 240;
