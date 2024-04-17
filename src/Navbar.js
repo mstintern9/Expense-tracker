@@ -6,7 +6,7 @@ export default function Navbar() {
     <div className="navbar">
       <span className="iconContainer"></span>
       <div className="header">
-        <p style={{ fontSize: "3.7vh", paddingBottom: "2vh" }}>
+        <p style={{ fontSize: "3.7vh", paddingBottom: "2vh",fontWeight:500 }}>
           Expense Tracker
         </p>
       </div>

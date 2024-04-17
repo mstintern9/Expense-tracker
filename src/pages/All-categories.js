@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import CardComponent from "../components/CardComponent";
 import DataGridComponent from "../components/DataGridComponent";
+import "./allcategories.css"
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 export default function AllCategories() {
   const [categories, setCategories] = useState([]);
@@ -26,29 +29,30 @@ export default function AllCategories() {
   };
 
   const columns = [
-    { field: "id", headerName: "ID", width: 150 },
-    { field: "name", headerName: "Name", width: 150 },
-    { field: "description", headerName: "Description", width: 250 },
+    { field: "id", headerName: "ID", width: 320,headerClassName: "header-cell" },
+    { field: "name", headerName: "Name", width: 320,headerClassName: "header-cell" },
+    { field: "description", headerName: "Description", width: 320 ,headerClassName: "header-cell" },
     {
       field: "action",
       headerName: "Action",
-      width: 150,
+      width: 300,
       renderCell: (params) => (
         <>
           <button
             className="tableButton"
             onClick={() => handleCategoryEdit(params.row.id)}
           >
-            Edit
+            <EditIcon />
           </button>
           <button
             className="tableButton"
             onClick={() => handleCategoryDelete(params.row.id)}
           >
-            Delete
+            <DeleteIcon />
           </button>
         </>
       ),
+      headerClassName: "action-cell",
     },
   ];
 

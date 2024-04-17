@@ -1,0 +1,21 @@
+.tableButton {
+  margin-top: 4px;
+  width: 6vh;
+  height: 3vh;
+  background: rgb(63, 81, 181);
+  box-shadow: 4.7px 9.4px 9.4px hsl(0deg 0% 0% / 0.35);
+  border: none;
+  color: white;
+  border-radius: 1.45vh;
+}
+
+.tableButton:hover {
+  background-color: rgba(52, 71, 181, 0.819);
+  cursor: pointer;
+}
+
+.action-cell{
+    color: gray;
+    font-size: 2vh;
+    margin-left: 3vh;
+}

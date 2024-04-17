@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import CardComponent from "../components/CardComponent";
 import DataGridComponent from "../components/DataGridComponent";
+import "./allExpense.css"
 
 export default function AllExpense() {
   const [expenses, setExpenses] = useState([]);
@@ -12,12 +13,48 @@ export default function AllExpense() {
   }, []);
 
   const columns = [
-    { field: "date", headerName: "Date", width: 280 },
-    { field: "description", headerName: "Description", width: 250 },
-    { field: "debit", headerName: "Debit", type: "number", width: 240 },
-    { field: "credit", headerName: "Credit", type: "number", width: 280 },
-    { field: "category", headerName: "Category", width: 250 },
-    { field: "balance", headerName: "Balance", type: "number", width: 180 },
+    {
+      field: "date",
+      headerName: "Date",
+      width: 280,
+      headerClassName: "header-cell",
+    },
+    {
+      field: "description",
+      headerName: "Description",
+      width: 250,
+      headerClassName: "header-cell",
+    },
+    {
+      field: "debit",
+      headerName: "Debit",
+      type: "number",
+      width: 240,
+      headerClassName: "header-cell",
+      cellClassName: "debit-cell" 
+    },
+    {
+      field: "credit",
+      headerName: "Credit",
+      type: "number",
+      width: 240,
+      headerClassName: "header-cell",
+      cellClassName: "credit-cell"
+    },
+    {
+      field: "category",
+      headerName: "Category",
+      width: 240,
+      headerClassName: "category-header",
+      cellClassName: "category-cell" 
+    },
+    {
+      field: "balance",
+      headerName: "Balance",
+      type: "number",
+      width: 180,
+      headerClassName: "header-cell",
+    },
   ];
 
   const calculateBalance = () => {
@@ -51,7 +88,7 @@ export default function AllExpense() {
   return (
     <>
       <CardComponent title={"All Expense"}>
-        <DataGridComponent columns={columns} rows={rows} />
+        <DataGridComponent columns={columns} rows={rows} className="data-grid" />
       </CardComponent>
     </>
   );
