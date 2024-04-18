@@ -1,63 +1,21 @@
 import React, { useState, useEffect } from "react";
 import CardComponent from "../components/CardComponent";
 import DataGridComponent from "../components/DataGridComponent";
-import "./allExpense.css"
+import "./allExpense.css";
 
 export default function AllExpense() {
   const [expenses, setExpenses] = useState([]);
+  const [balanceMap, setBalanceMap] = useState({});
 
   useEffect(() => {
     const storedExpenses =
       JSON.parse(localStorage.getItem("expenseData")) || [];
     setExpenses(storedExpenses);
+    const initialBalanceMap = calculateInitialBalanceMap(storedExpenses);
+    setBalanceMap(initialBalanceMap);
   }, []);
 
-  const columns = [
-    {
-      field: "date",
-      headerName: "Date",
-      width: 280,
-      headerClassName: "header-cell",
-    },
-    {
-      field: "description",
-      headerName: "Description",
-      width: 250,
-      headerClassName: "header-cell",
-    },
-    {
-      field: "debit",
-      headerName: "Debit",
-      type: "number",
-      width: 240,
-      headerClassName: "header-cell",
-      cellClassName: "debit-cell" 
-    },
-    {
-      field: "credit",
-      headerName: "Credit",
-      type: "number",
-      width: 240,
-      headerClassName: "header-cell",
-      cellClassName: "credit-cell"
-    },
-    {
-      field: "category",
-      headerName: "Category",
-      width: 240,
-      headerClassName: "category-header",
-      cellClassName: "category-cell" 
-    },
-    {
-      field: "balance",
-      headerName: "Balance",
-      type: "number",
-      width: 180,
-      headerClassName: "header-cell",
-    },
-  ];
-
-  const calculateBalance = () => {
+  const calculateInitialBalanceMap = (expenses) => {
     let balance = 0;
     const balanceMap = {};
     expenses.forEach((expense) => {
@@ -71,24 +29,69 @@ export default function AllExpense() {
     return balanceMap;
   };
 
-  const sortedExpenses = expenses.sort(
-    (a, b) => new Date(a.date) - new Date(b.date)
-  );
+  const columns = [
+    {
+      field: "date",
+      headerName: "Date",
+      width: 250,
+      headerClassName: "header-cell",
+    },
+    {
+      field: "description",
+      headerName: "Description",
+      width: 230,
+      headerClassName: "header-cell",
+    },
+    {
+      field: "debit",
+      headerName: "Debit",
+      type: "number",
+      width: 240,
+      headerClassName: "header-cell",
+      cellClassName: "debit-cell",
+    },
+    {
+      field: "credit",
+      headerName: "Credit",
+      type: "number",
+      width: 220,
+      headerClassName: "header-cell",
+      cellClassName: "credit-cell",
+    },
+    {
+      field: "category",
+      headerName: "Category",
+      width: 210,
+      headerClassName: "category-header",
+      cellClassName: "category-cell",
+    },
+    {
+      field: "balance",
+      headerName: "Balance",
+      type: "number",
+      width: 190,
+      headerClassName: "header-cell",
+    },
+  ];
 
-  const rows = sortedExpenses.map((expense) => ({
+  const rows = expenses.map((expense) => ({
     id: expense.id,
     date: expense.date,
     description: expense.description,
     debit: expense.transactionType === "debit" ? expense.amount : "-",
     credit: expense.transactionType === "credit" ? expense.amount : "-",
     category: expense.category,
-    balance: calculateBalance()[expense.id],
+    balance: balanceMap[expense.id],
   }));
 
   return (
     <>
       <CardComponent title={"All Expense"}>
-        <DataGridComponent columns={columns} rows={rows} className="data-grid" />
+        <DataGridComponent
+          columns={columns}
+          rows={rows}
+          className="data-grid"
+        />
       </CardComponent>
     </>
   );

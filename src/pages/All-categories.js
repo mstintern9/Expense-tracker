@@ -29,7 +29,6 @@ export default function AllCategories() {
   };
 
   const columns = [
-    { field: "id", headerName: "ID", width: 320,headerClassName: "header-cell" },
     { field: "name", headerName: "Name", width: 320,headerClassName: "header-cell" },
     { field: "description", headerName: "Description", width: 320 ,headerClassName: "header-cell" },
     {
