@@ -5,7 +5,7 @@ import CardComponent from "../components/CardComponent";
 
 export default function AddExpense() {
   const [amount, setAmount] = useState("");
-  const [transactionType, setTransactionType] = useState("debit"); 
+  const [transactionType, setTransactionType] = useState("debit");
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
   const [formValid, setFormValid] = useState(true);
@@ -16,38 +16,41 @@ export default function AddExpense() {
   const isEditing = !!id;
 
   useEffect(() => {
-    const storedCategories = JSON.parse(localStorage.getItem("categories")) || [];
+    const storedCategories =
+      JSON.parse(localStorage.getItem("categories")) || [];
     setCategories(storedCategories);
-  
+
     if (isEditing) {
       const expenseId = parseInt(id);
-      const storedExpenses = JSON.parse(localStorage.getItem("expenseData")) || [];
+      const storedExpenses =
+        JSON.parse(localStorage.getItem("expenseData")) || [];
       const expenseData = storedExpenses.find((item) => item.id === expenseId);
-  
+
       if (expenseData) {
         setAmount(expenseData.amount);
-        setTransactionType(expenseData.transactionType || "debit"); 
+        setTransactionType(expenseData.transactionType || "debit");
         setCategory(expenseData.category);
         setDescription(expenseData.description);
         setSelectedDate(expenseData.date);
       }
     }
   }, [id, isEditing]);
-  
+
   const addExpense = (newExpense) => {
-    const storedExpenses = JSON.parse(localStorage.getItem("expenseData")) || [];
+    const storedExpenses =
+      JSON.parse(localStorage.getItem("expenseData")) || [];
     const newData = [...storedExpenses, newExpense];
     localStorage.setItem("expenseData", JSON.stringify(newData));
   };
 
   const updateExpense = (updatedExpense) => {
-    const storedExpenses = JSON.parse(localStorage.getItem("expenseData")) || [];
+    const storedExpenses =
+      JSON.parse(localStorage.getItem("expenseData")) || [];
     const newData = storedExpenses.map((expense) =>
       expense.id === updatedExpense.id ? updatedExpense : expense
     );
     localStorage.setItem("expenseData", JSON.stringify(newData));
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -57,9 +60,11 @@ export default function AddExpense() {
       minute: "2-digit",
       second: "2-digit",
       hour12: false,
-      timeZone: "Asia/Karachi" 
+      timeZone: "Asia/Karachi",
     };
-    const formattedDateTime = currentDate.toLocaleString("en-PK", options).replace(/,/g, "");
+    const formattedDateTime = currentDate
+      .toLocaleString("en-PK", options)
+      .replace(/,/g, "");
 
     if (!amount || !category || !description || !selectedDate) {
       setFormValid(false);
@@ -70,7 +75,7 @@ export default function AddExpense() {
       id: isEditing ? parseInt(id) : generateRandomId(),
       date: `${selectedDate} ${formattedDateTime}`,
       amount,
-      transactionType, 
+      transactionType,
       category,
       description,
     };
@@ -81,7 +86,7 @@ export default function AddExpense() {
       addExpense(expense);
     }
     setAmount("");
-    setTransactionType("debit"); 
+    setTransactionType("debit");
     setCategory("");
     setDescription("");
     setSelectedDate("");
@@ -100,7 +105,10 @@ export default function AddExpense() {
   return (
     <>
       <CardComponent title={"Add Expense"}>
-        <div style={{ marginLeft: "27vh" ,height:"53vh" , marginTop:"2vh"}} className="add-Expense">
+        <div
+          style={{ marginLeft: "27vh", height: "53vh", marginTop: "2vh" }}
+          className="add-Expense"
+        >
           <form onSubmit={handleSubmit}>
             <div
               className="firstForm"
@@ -114,7 +122,7 @@ export default function AddExpense() {
                 type="number"
                 placeholder="Amount"
               />
-              <div style={{marginTop:"1vh",marginBottom:"1vh"}}>
+              <div style={{ marginTop: "1vh", marginBottom: "1vh" }}>
                 <label className="label">Transaction Type:</label>
                 <label>
                   <input
@@ -156,7 +164,7 @@ export default function AddExpense() {
                 type="date"
                 value={selectedDate}
                 onChange={(e) => setSelectedDate(e.target.value)}
-              />  
+              />
             </div>
             <div
               className="secondForm"
@@ -174,7 +182,15 @@ export default function AddExpense() {
                 {isEditing ? "Update Expense" : "Submit Expense"}
               </button>
               {!formValid && (
-                <p style={{ color: "red",marginTop:"3.4vh",fontSize:"1.7vh" }}>Please fill out all fields</p>
+                <p
+                  style={{
+                    color: "red",
+                    marginTop: "3.4vh",
+                    fontSize: "1.7vh",
+                  }}
+                >
+                  Please fill out all fields
+                </p>
               )}
             </div>
           </form>

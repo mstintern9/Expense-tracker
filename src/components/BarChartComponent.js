@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
   BarChart,
   Bar,
@@ -10,45 +10,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const BarChartComponent = ({ selectedDate }) => {
-  const [expenses, setExpenses] = useState([]);
-
-  useEffect(() => {
-    const storedExpenses =
-      JSON.parse(localStorage.getItem("expenseData")) || [];
-    setExpenses(storedExpenses);
-  }, []);
-
-  const filteredExpenses = selectedDate
-    ? expenses.filter(
-        (expense) =>
-          new Date(expense.date).toISOString().split("T")[0] === selectedDate
-      )
-    : expenses;
-
-  const calculateDailyDebitCredit = () => {
-    const dailyData = {};
-    filteredExpenses.forEach((expense) => {
-      const time = new Date(expense.date).toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-      });
-      const amount = parseFloat(expense.amount);
-      if (!dailyData[time]) {
-        dailyData[time] = { time: time, debit: 0, credit: 0 };
-      }
-      if (expense.transactionType === "debit") {
-        dailyData[time].debit += amount;
-      } else {
-        dailyData[time].credit += amount;
-      }
-    });
-    return Object.values(dailyData);
-  };
-
-  const dailyData = calculateDailyDebitCredit();
-
+const BarChartComponent = ({ dailyData }) => {
   return (
     <ResponsiveContainer width="98%" height="95%">
       <BarChart
@@ -75,7 +37,6 @@ const BarChartComponent = ({ selectedDate }) => {
             return `${hours}:${minutes}`;
           }}
         />
-
         <YAxis />
         <Tooltip />
         <Legend />
