@@ -8,9 +8,14 @@ export default function Dashboard() {
   const [expenses, setExpenses] = useState([]);
 
   useEffect(() => {
-    const storedExpenses = JSON.parse(localStorage.getItem("expenseData")) || [];
+    const storedExpenses =
+      JSON.parse(localStorage.getItem("expenseData")) || [];
     setExpenses(storedExpenses);
   }, []);
+
+  useEffect(() => {
+    console.log(selectedDate);
+  }, [selectedDate]);
 
   const handleDateChange = (event) => {
     setSelectedDate(event.target.value);
@@ -25,13 +30,13 @@ export default function Dashboard() {
     }, 0);
   };
 
-  const totalDebit = calculateTotalAmount('debit');
-  const totalCredit = calculateTotalAmount('credit');
+  const totalDebit = calculateTotalAmount("debit");
+  const totalCredit = calculateTotalAmount("credit");
   const totalAmount = totalDebit + totalCredit;
 
   const data = [
-    { name: 'Debit', value: Math.round((totalDebit / totalAmount) * 100) },
-    { name: 'Credit', value: Math.round((totalCredit / totalAmount) * 100) },
+    { name: "Debit", value: Math.round((totalDebit / totalAmount) * 100) },
+    { name: "Credit", value: Math.round((totalCredit / totalAmount) * 100) },
   ];
 
   const filteredExpenses = selectedDate
@@ -74,7 +79,11 @@ export default function Dashboard() {
           style={{ display: "flex", flexDirection: "column" }}
           className="secondContainer"
         >
-          <input className="datePicker" type="date" onChange={handleDateChange} />
+          <input
+            className="datePicker"
+            type="date"
+            onChange={handleDateChange}
+          />
           <BarChartComponent dailyData={dailyData} />
         </div>
       </div>

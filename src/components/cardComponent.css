@@ -1,0 +1,22 @@
+.box {
+  margin-left: 33vh;
+  flex-grow: 1;
+  margin-left: 33vh;
+  margin-right: 12vh;
+  margin-top: 6vh;
+  height: 74vh;
+  padding: 2.3vh;
+  border-radius: 1.5vh;
+  display: flex;
+  flex-direction: column;
+  border: "3px solid rgb(221, 221, 221)";
+  background-color: "rgb(255, 255, 255)";
+}
+
+@media only screen and (max-width: 1100px) {
+  .box {
+    width: 41vh;
+    margin-left: 18.3vh;
+    height: 72vh;
+  }
+}

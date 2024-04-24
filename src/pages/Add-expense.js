@@ -105,10 +105,7 @@ export default function AddExpense() {
   return (
     <>
       <CardComponent title={"Add Expense"}>
-        <div
-          style={{ marginLeft: "27vh", height: "53vh", marginTop: "2vh" }}
-          className="add-Expense"
-        >
+        <div className="add-Expense">
           <form onSubmit={handleSubmit}>
             <div
               className="firstForm"
@@ -144,7 +141,6 @@ export default function AddExpense() {
                 </label>
               </div>
               <select
-                style={{ width: "36vh", height: "5vh" }}
                 className="inputs"
                 value={category}
                 onChange={handleChange}

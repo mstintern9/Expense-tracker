@@ -21,7 +21,7 @@ const BarChartComponent = ({ dailyData }) => {
           top: 28,
           right: 10,
           left: 10,
-          bottom: 7,
+          bottom: 27,
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
@@ -31,7 +31,7 @@ const BarChartComponent = ({ dailyData }) => {
           interval={0}
           angle={0}
           textAnchor="middle"
-          height={80}
+          height={70}
           tickFormatter={(time) => {
             const [hours, minutes] = time.split(":");
             return `${hours}:${minutes}`;

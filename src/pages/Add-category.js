@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import CardComponent from "../components/CardComponent";
+import "./addcategory.css"
 
 export default function AddCategory() {
   const [category, setCategory] = useState("");
@@ -66,7 +67,7 @@ export default function AddCategory() {
   return (
     <>
       <CardComponent title={"Add Category"} >
-        <div style={{ marginLeft: "27vh", height:"46vh",marginTop:"4vh" }} className="add-Expense">
+        <div className="add-category">
           <form onSubmit={isEditing ? handleUpdate : handleSubmit}>
             <div style={{ display: "flex", flexDirection: "column" }}>
               <label className="label">Category:</label>

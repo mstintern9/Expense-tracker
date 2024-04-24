@@ -83,3 +83,16 @@
     color: grey;
     margin-left: 2vh;
 }
+
+@media only screen and (max-width: 1100px) {
+    .add-Expense{
+        margin-left: -1.6vh;
+        width: 35vh;
+        margin-top: 2vh;
+    }
+
+    .inputs{
+        width: 32vh;
+        font-size: 1.3vh;
+    }
+  }
