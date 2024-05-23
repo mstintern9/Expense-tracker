@@ -181,7 +181,7 @@ export default function AddExpense() {
                 <p
                   style={{
                     color: "red",
-                    marginTop: "2.4vh",
+                    marginTop: "1.2vh",
                     fontSize: "1.7vh",
                   }}
                 >
